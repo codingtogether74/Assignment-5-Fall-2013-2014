@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  TopPlacesTVC.h
 //  Top Places
 //
 //  Created by Tatiana Kornilova on 12/15/13.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface TopPlacesTVC : UITableViewController
+@property (nonatomic,strong) NSArray *places; // of Flickr place NSDictionary
 @end
