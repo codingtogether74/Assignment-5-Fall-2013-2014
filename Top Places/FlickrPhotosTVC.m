@@ -9,6 +9,7 @@
 #import "FlickrPhotosTVC.h"
 #import "FlickrFetcher.h"
 #import "ImageViewController.h"
+#import "RecentsUserDefaults.h"
 
 @interface FlickrPhotosTVC ()
 
@@ -68,9 +69,6 @@
     // Configure the cell...
     cell.textLabel.text = [self titleForRow:indexPath.row];
     cell.detailTextLabel.text = [self subTitleForRow:indexPath.row];
-//    NSDictionary *photo = self.photos[indexPath.row];
-//    cell.textLabel.text = [photo valueForKeyPath:FLICKR_PHOTO_TITLE];
-//    cell.detailTextLabel.text = [photo valueForKeyPath:FLICKR_PHOTO_DESCRIPTION];
     
     return cell;
 }
@@ -84,15 +82,17 @@
         detail = [((UINavigationController *)detail).viewControllers firstObject];
     }
     if ([detail isKindOfClass:[ImageViewController class]]) {
-        [self prepareImageViewController:detail toDisplayPhoto:self.photos[indexPath.row]];
+        [self prepareImageViewController:detail toDisplayPhoto:self.photos[indexPath.row] forRow:indexPath.row];
+         [RecentsUserDefaults saveRecentsUserDefaults:self.photos[indexPath.row]];
     }
 }
 
 #pragma mark - Navigation
--(void)prepareImageViewController:(ImageViewController *)ivc toDisplayPhoto:(NSDictionary *)photo
+-(void)prepareImageViewController:(ImageViewController *)ivc toDisplayPhoto:(NSDictionary *)photo forRow:(NSUInteger)row
 {
     ivc.imageURL = [FlickrFetcher URLforPhoto:photo format:FlickrPhotoFormatLarge];
-    ivc.title = [photo valueForKeyPath:FLICKR_PHOTO_TITLE];
+    ivc.title = [self titleForRow:row];//[photo valueForKeyPath:FLICKR_PHOTO_TITLE];
+   
 }
 // In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -105,7 +105,9 @@
         if (indexPath) {
             if ([segue.identifier isEqualToString:@"Display Photo"]) {
                 if ([segue.destinationViewController isKindOfClass:[ImageViewController class]]) {
-                    [self prepareImageViewController:segue.destinationViewController toDisplayPhoto:self.photos[indexPath.row]];
+                    [self prepareImageViewController:segue.destinationViewController toDisplayPhoto:self.photos[indexPath.row] forRow:indexPath.row
+                     ];
+                     [RecentsUserDefaults saveRecentsUserDefaults:self.photos[indexPath.row]];
                 }
             }
         }
