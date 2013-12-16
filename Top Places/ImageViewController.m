@@ -13,7 +13,7 @@
 @property (nonatomic,strong) UIImage *image;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
-
+@property (nonatomic, getter = isAutoZoomed) BOOL autoZoomed;
 @end
 
 @implementation ImageViewController
@@ -32,6 +32,12 @@
     return self.imageView;
 }
 
+// Disable autoZoom after the user performs a zoom (by pinching)
+- (void)scrollViewWillBeginZooming:(UIScrollView *)scrollView withView:(UIView *)view
+{
+    self.autoZoomed = NO;
+}
+
 -(void)setImageURL:(NSURL *)imageURL
 {
     _imageURL =imageURL;
@@ -41,6 +47,7 @@
 -(void)startDownLoadImage
 {
     self.image =nil;
+    self.autoZoomed = YES;
     if (self.imageURL) {
         [self.spinner startAnimating];
         NSURLRequest *request = [NSURLRequest requestWithURL:self.imageURL];
@@ -75,7 +82,26 @@
     self.imageView.image =image;
     self.imageView.frame =CGRectMake(0, 0, image.size.width, image.size.height);
     self.scrollView.contentSize = self.image ? self.image.size : CGSizeZero;
+    [self zoomScaleToFit];
     [self.spinner stopAnimating];
+}
+
+// Calculate zoom scale to fit the image in the screen without blank spaces
+- (void)zoomScaleToFit
+{
+    // if is AutoZoomed then set the zoomScale property only if the geometry is completely loaded
+    if ((self.isAutoZoomed)&&(self.imageView.bounds.size.width)&&(self.scrollView.bounds.size.width)) {
+        CGFloat widthRatio  = self.scrollView.bounds.size.width  / self.imageView.bounds.size.width;
+        CGFloat heightRatio = self.scrollView.bounds.size.height / self.imageView.bounds.size.height;
+        self.scrollView.zoomScale = (widthRatio > heightRatio) ? widthRatio : heightRatio;
+    }
+}
+
+// When subviews are layed out we set the zoom to make the image fit the screen.
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    [self zoomScaleToFit];
 }
 
 -(void)viewDidLoad
