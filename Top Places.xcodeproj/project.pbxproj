@@ -26,6 +26,7 @@
 		E410308C185DF60000ED34E3 /* FlickrPhotosTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E410308B185DF60000ED34E3 /* FlickrPhotosTVC.m */; };
 		E410308F185DF61B00ED34E3 /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E410308E185DF61B00ED34E3 /* ImageViewController.m */; };
 		E4103092185DF80F00ED34E3 /* PlaceFlickrPhotos.m in Sources */ = {isa = PBXBuildFile; fileRef = E4103091185DF80F00ED34E3 /* PlaceFlickrPhotos.m */; };
+		E4103095185F056F00ED34E3 /* CurrentTopPlacesTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E4103094185F056F00ED34E3 /* CurrentTopPlacesTVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,8 @@
 		E410308E185DF61B00ED34E3 /* ImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewController.m; sourceTree = "<group>"; };
 		E4103090185DF80F00ED34E3 /* PlaceFlickrPhotos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceFlickrPhotos.h; sourceTree = "<group>"; };
 		E4103091185DF80F00ED34E3 /* PlaceFlickrPhotos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceFlickrPhotos.m; sourceTree = "<group>"; };
+		E4103093185F056F00ED34E3 /* CurrentTopPlacesTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentTopPlacesTVC.h; sourceTree = "<group>"; };
+		E4103094185F056F00ED34E3 /* CurrentTopPlacesTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentTopPlacesTVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +141,8 @@
 				E410308E185DF61B00ED34E3 /* ImageViewController.m */,
 				E4103082185DD07900ED34E3 /* TopPlacesTVC.h */,
 				E4103083185DD07900ED34E3 /* TopPlacesTVC.m */,
+				E4103093185F056F00ED34E3 /* CurrentTopPlacesTVC.h */,
+				E4103094185F056F00ED34E3 /* CurrentTopPlacesTVC.m */,
 				E4103065185DCEFC00ED34E3 /* Images.xcassets */,
 				E4103051185DCEFC00ED34E3 /* Supporting Files */,
 			);
@@ -286,6 +291,7 @@
 				E410308F185DF61B00ED34E3 /* ImageViewController.m in Sources */,
 				E410308C185DF60000ED34E3 /* FlickrPhotosTVC.m in Sources */,
 				E4103084185DD07900ED34E3 /* TopPlacesTVC.m in Sources */,
+				E4103095185F056F00ED34E3 /* CurrentTopPlacesTVC.m in Sources */,
 				E410305B185DCEFC00ED34E3 /* AppDelegate.m in Sources */,
 				E4103092185DF80F00ED34E3 /* PlaceFlickrPhotos.m in Sources */,
 				E4103089185DD1B500ED34E3 /* FlickrFetcher.m in Sources */,
@@ -508,6 +514,7 @@
 				E410307E185DCEFC00ED34E3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E410307F185DCEFC00ED34E3 /* Build configuration list for PBXNativeTarget "Top PlacesTests" */ = {
 			isa = XCConfigurationList;
@@ -516,6 +523,7 @@
 				E4103081185DCEFC00ED34E3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

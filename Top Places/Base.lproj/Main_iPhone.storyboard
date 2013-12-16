@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3746"/>
     </dependencies>
     <scenes>
-        <!--Top PlacesTVC - Top Places-->
+        <!--Current Top PlacesTVC - Top Places-->
         <scene sceneID="K7t-v1-gFn">
             <objects>
-                <tableViewController id="tmb-EV-rV4" customClass="TopPlacesTVC" sceneMemberID="viewController">
+                <tableViewController id="tmb-EV-rV4" customClass="CurrentTopPlacesTVC" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="NfM-AN-j39">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -37,7 +37,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="FA0-mC-lvq" kind="push" identifier="Place Photos" id="FNG-dE-ICZ"/>
+                                    <segue destination="ev5-b2-CDo" kind="push" identifier="Place Photos" id="vgd-Dl-Rox"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -76,30 +76,30 @@
             </objects>
             <point key="canvasLocation" x="236" y="41"/>
         </scene>
-        <!--Place Flickr Photos - Shutterbug-->
-        <scene sceneID="Ilb-LZ-6FH">
+        <!--Place Flickr Photos-->
+        <scene sceneID="ZQq-ba-F2N">
             <objects>
-                <tableViewController id="FA0-mC-lvq" customClass="PlaceFlickrPhotos" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="XHD-v4-vAW">
+                <tableViewController id="ev5-b2-CDo" customClass="PlaceFlickrPhotos" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="1c1-qc-ScH">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Flickr Photo Cell" textLabel="PvI-vJ-HTl" detailTextLabel="h9m-iK-HGh" style="IBUITableViewCellStyleSubtitle" id="sXL-mW-T7b">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Flickr Photo Cell" textLabel="W0N-Y3-0Iz" detailTextLabel="iEX-v2-ohD" style="IBUITableViewCellStyleSubtitle" id="XhS-p9-Iy1">
                                 <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sXL-mW-T7b" id="LpA-qv-yva">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XhS-p9-Iy1" id="ars-Zb-CCS">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PvI-vJ-HTl">
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="W0N-Y3-0Iz">
                                             <rect key="frame" x="15" y="3" width="34" height="22"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="h9m-iK-HGh">
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iEX-v2-ohD">
                                             <rect key="frame" x="15" y="25" width="43" height="15"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -109,26 +109,26 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="oQt-7f-haE" kind="push" identifier="Display Photo" id="Sbe-RJ-0GD"/>
+                                    <segue destination="oQt-7f-haE" kind="push" identifier="Display Photo" id="ogo-8G-bVw"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="FA0-mC-lvq" id="Jif-XR-vc9"/>
-                            <outlet property="delegate" destination="FA0-mC-lvq" id="rg7-Pm-IuK"/>
+                            <outlet property="dataSource" destination="ev5-b2-CDo" id="Kru-Rk-VoR"/>
+                            <outlet property="delegate" destination="ev5-b2-CDo" id="hJY-LW-kRA"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Shutterbug" id="WMH-xf-3c9"/>
-                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="z05-kq-Lxe">
+                    <navigationItem key="navigationItem" id="9V6-pU-hb1"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="B4k-ak-8xO">
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
-                            <action selector="fetchPhotos" destination="FA0-mC-lvq" eventType="valueChanged" id="Tij-Jy-Tqi"/>
+                            <action selector="fetchPhotos" destination="ev5-b2-CDo" eventType="valueChanged" id="n6W-s9-9Mg"/>
                         </connections>
                     </refreshControl>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vl1-f9-iZa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hIB-Dl-BTt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1011" y="41"/>
+            <point key="canvasLocation" x="1019" y="31"/>
         </scene>
         <!--Image View Controller-->
         <scene sceneID="O3R-Xo-W2U">

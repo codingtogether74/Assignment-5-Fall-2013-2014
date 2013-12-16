@@ -22,16 +22,17 @@
     _place = place;
     [self fetchPhotos];
 }
-
--(void)fetchPhotos
+- (IBAction)fetchPhotos
 {
     [self.refreshControl beginRefreshing];
+    [self.tableView setContentOffset:CGPointMake(0, -self.refreshControl.frame.size.height) animated:YES];
+
     NSURL *url = [FlickrFetcher URLforPhotosInPlace:[self.place valueForKeyPath:FLICKR_PLACE_ID] maxResults:MAX_RESULTS];
     dispatch_queue_t fetchQ =dispatch_queue_create("flickr fetcher", NULL);
     dispatch_async(fetchQ, ^{
         NSData *jsonResults = [NSData dataWithContentsOfURL:url];
         
-
+        
         NSDictionary *propertyListResults =[NSJSONSerialization JSONObjectWithData:jsonResults
                                                                            options:0
                                                                              error:NULL];
@@ -43,7 +44,7 @@
         });
         
     });
- 
 }
+
 
 @end

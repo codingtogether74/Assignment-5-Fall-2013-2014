@@ -35,6 +35,30 @@
     // Return the number of rows in the section.
     return [self.photos count];
 }
+#define FLICKR_UNKNOWN_PHOTO @"Unknown"
+
+-(NSString *)titleForRow:(NSUInteger)row
+{
+    NSString *titleCell = [[self.photos[row] valueForKeyPath:FLICKR_PHOTO_TITLE] description];
+    if ([titleCell length]== 0) {
+        titleCell = [[self.photos[row] valueForKeyPath:FLICKR_PHOTO_DESCRIPTION] description];
+        if ([titleCell length]== 0) {
+            titleCell = FLICKR_UNKNOWN_PHOTO;
+        }
+    }
+    return titleCell;
+
+}
+
+-(NSString *)subTitleForRow:(NSUInteger)row
+{
+    NSString *subTitle = [[self.photos[row] valueForKeyPath:FLICKR_PHOTO_DESCRIPTION] description]; // description because could be NSNull
+    if ([[self titleForRow:row] isEqualToString:subTitle] || [[self titleForRow:row] isEqualToString:FLICKR_UNKNOWN_PHOTO]) {
+        subTitle = @"";
+    }
+    return subTitle;
+    
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -42,9 +66,11 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
-    NSDictionary *photo = self.photos[indexPath.row];
-    cell.textLabel.text = [photo valueForKeyPath:FLICKR_PHOTO_TITLE];
-    cell.detailTextLabel.text = [photo valueForKeyPath:FLICKR_PHOTO_DESCRIPTION];
+    cell.textLabel.text = [self titleForRow:indexPath.row];
+    cell.detailTextLabel.text = [self subTitleForRow:indexPath.row];
+//    NSDictionary *photo = self.photos[indexPath.row];
+//    cell.textLabel.text = [photo valueForKeyPath:FLICKR_PHOTO_TITLE];
+//    cell.detailTextLabel.text = [photo valueForKeyPath:FLICKR_PHOTO_DESCRIPTION];
     
     return cell;
 }
