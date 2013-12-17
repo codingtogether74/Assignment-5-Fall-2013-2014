@@ -47,7 +47,7 @@
 -(void)startDownLoadImage
 {
     self.image =nil;
-    self.autoZoomed = YES;
+
     if (self.imageURL) {
         [self.spinner startAnimating];
         NSURLRequest *request = [NSURLRequest requestWithURL:self.imageURL];
@@ -82,6 +82,7 @@
     self.imageView.image =image;
     self.imageView.frame =CGRectMake(0, 0, image.size.width, image.size.height);
     self.scrollView.contentSize = self.image ? self.image.size : CGSizeZero;
+    self.autoZoomed = YES;
     [self zoomScaleToFit];
     [self.spinner stopAnimating];
 }
@@ -116,6 +117,7 @@
 {
     self.splitViewController.delegate =self;
 }
+
 -(BOOL)splitViewController:(UISplitViewController *)svc
   shouldHideViewController:(UIViewController *)vc
              inOrientation:(UIInterfaceOrientation)orientation
@@ -128,7 +130,19 @@
          withBarButtonItem:(UIBarButtonItem *)barButtonItem
       forPopoverController:(UIPopoverController *)pc
 {
-    barButtonItem.title = aViewController.title;
+    UIViewController *aVC = aViewController;
+    if ([aVC isKindOfClass:[UITabBarController class]]) {
+        aVC = ((UITabBarController *)aVC).selectedViewController;
+    }
+    if ([aVC isKindOfClass:[UINavigationController class]]) {
+        aVC = ((UINavigationController *)aVC).topViewController;
+    }
+    if (aVC) {
+        barButtonItem.title = aVC.title;
+    } else {
+        barButtonItem.title = @"Top Places";
+    }
+
     self.navigationItem.leftBarButtonItem =barButtonItem;
     
 }
