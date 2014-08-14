@@ -29,12 +29,14 @@
     [self.tableView setContentOffset:CGPointMake(0, -self.refreshControl.frame.size.height) animated:YES];
 
     NSURL *url = [FlickrFetcher URLforTopPlaces];
+    NSLog(@"URL %@",url);
     // create a (non-main) queue to do fetch on
     dispatch_queue_t fetchQ = dispatch_queue_create("flickr fetcher", NULL);
     // put a block to do the fetch onto that queue
     dispatch_async(fetchQ, ^{
         // fetch the JSON data from Flickr
         NSData *jsonResults = [NSData dataWithContentsOfURL:url];
+        
         // convert it to a Property List (NSArray and NSDictionary)
         NSDictionary *results = [NSJSONSerialization JSONObjectWithData:jsonResults
                                                                 options:0
